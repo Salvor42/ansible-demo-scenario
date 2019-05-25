@@ -22,7 +22,6 @@ RUN  wget https://github.com/docker/compose/releases/download/1.23.2/docker-comp
 # Add backports
 RUN echo "deb http://ftp.debian.org/debian stretch-backports main" \
     >/etc/apt/sources.list.d/backports.list
-RUN apt -y install -t stretch-backports ansible
 
 RUN apt update && apt -y install -t stretch-backports ansible
 
