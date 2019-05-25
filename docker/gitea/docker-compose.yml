@@ -1,4 +1,4 @@
-version: '2'
+version: '3.5'
 services:
   gitea:
     image: gitea/gitea
@@ -7,4 +7,10 @@ services:
     ports:
       - "3000:3000"
       - "2222:22"
+    networks:
+      - demonet
     restart: always
+
+networks:
+  demonet:
+    name: ansible-demo-scenario
