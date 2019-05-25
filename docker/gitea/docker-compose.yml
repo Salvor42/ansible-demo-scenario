@@ -3,14 +3,17 @@ services:
   gitea:
     image: gitea/gitea
     volumes:
-      - ./volumes/gitea/data:/data
+      - gitea_data:/data
     ports:
       - "3000:3000"
       - "2222:22"
     networks:
       - demonet
-    restart: always
+    restart: unless-stopped
 
+volumes:
+  gitea_data:
+    
 networks:
   demonet:
     name: ansible-demo-scenario
