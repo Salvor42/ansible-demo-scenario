@@ -1,4 +1,4 @@
-version: '3.5'
+version: '2'
 services:
   gitea:
     image: gitea/gitea
@@ -13,7 +13,3 @@ services:
 
 volumes:
   gitea_data:
-    
-networks:
-  demonet:
-    name: ansible-demo-scenario
