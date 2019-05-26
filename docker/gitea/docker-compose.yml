@@ -7,8 +7,6 @@ services:
     ports:
       - "3000:3000"
       - "2222:22"
-    networks:
-      - demonet
     restart: unless-stopped
 
 volumes:
