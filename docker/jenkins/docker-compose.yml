@@ -5,13 +5,12 @@ services:
     image: local/jenkins
     build: ./build
     volumes:
-      - jenkins_home:/var/jenkins_home
+      - home:/var/jenkins_home
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 8080:8080
-      - 50000:50000
     restart: unless-stopped
 
 volumes:
-  jenkins_home:
+  home:
