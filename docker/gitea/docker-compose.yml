@@ -4,11 +4,11 @@ services:
   gitea:
     image: gitea/gitea
     volumes:
-      - gitea_data:/data
+      - data:/data
     ports:
       - "3000:3000"
       - "2222:22"
     restart: unless-stopped
 
 volumes:
-  gitea_data:
+  data:
