@@ -13,7 +13,7 @@ services:
     image: local/polemarch
     build: ./build
     volumes:
-      ./data/db.sqlite3:/db.sqlite3
+      - ./data/db.sqlite3:/db.sqlite3
     environment:
       TZ: "Europe/Berlin"
     ports:
