@@ -1,9 +1,19 @@
 version: '2'
 
 services:
+  setup:
+    image: alpine:latest
+    volumes:
+      - ./data:/mnt/setup
+    command: >
+      ash -c "cd /mnt/setup; touch db.sqlite3"
+
   polemarch:
+    depends_on: setup
     image: local/polemarch
     build: ./build
+    volumes:
+      ./data/db.sqlite3:/db.sqlite3
     environment:
       TZ: "Europe/Berlin"
     ports:
