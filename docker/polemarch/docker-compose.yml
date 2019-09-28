@@ -9,7 +9,8 @@ services:
       ash -c "cd /mnt/setup; touch db.sqlite3"
 
   polemarch:
-    depends_on: setup
+    depends_on:
+      - setup
     image: local/polemarch
     build: ./build
     volumes:
