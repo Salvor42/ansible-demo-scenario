@@ -17,10 +17,6 @@ services:
       - "./SECRET_KEY:/etc/tower/SECRET_KEY"
       - "./environment.sh:/etc/tower/conf.d/environment.sh"
       - "./credentials.py:/etc/tower/conf.d/credentials.py"
-    environment:
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
 
   task:
     image: ansible/awx_task
@@ -37,20 +33,16 @@ services:
       - "./SECRET_KEY:/etc/tower/SECRET_KEY"
       - "./environment.sh:/etc/tower/conf.d/environment.sh"
       - "./credentials.py:/etc/tower/conf.d/credentials.py"
-    environment:
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
 
   rabbitmq:
     image: ansible/awx_rabbitmq
     container_name: awx_rabbitmq
     restart: unless-stopped
     environment:
-      RABBITMQ_DEFAULT_VHOST: "awx"
-      RABBITMQ_DEFAULT_USER: "guest"
-      RABBITMQ_DEFAULT_PASS: "awxpass"
-      RABBITMQ_ERLANG_COOKIE: cookiemonster
+      - RABBITMQ_DEFAULT_VHOST=awx
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=awxpass
+      - RABBITMQ_ERLANG_COOKIE=cookiemonster
 
   memcached:
     image: memcached:alpine
@@ -64,10 +56,10 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data:Z
     environment:
-      POSTGRES_USER: awx
-      POSTGRES_PASSWORD: awxpass
-      POSTGRES_DB: awx
-      PGDATA: /var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=awx
+      - POSTGRES_PASSWORD=awxpass
+      - POSTGRES_DB=awx
+      - PGDATA=/var/lib/postgresql/data/pgdata
 
 volumes:
   pgdata:
