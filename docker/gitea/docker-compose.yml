@@ -3,6 +3,8 @@ version: '2'
 services:
   gitea:
     image: gitea/gitea
+    environment:
+      - ROOT_URL=http://git.example.org:3000/
     volumes:
       - data:/data
     ports:
